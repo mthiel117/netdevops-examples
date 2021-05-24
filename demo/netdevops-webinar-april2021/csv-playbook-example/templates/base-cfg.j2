@@ -3,7 +3,7 @@
 !
 hostname {{ switch.hostname }}
 !
-interface Vlan100
+interface Management1
    description Management
    ip address {{ switch.mgmt_ip }}/{{ switch.netmask }}
 !
