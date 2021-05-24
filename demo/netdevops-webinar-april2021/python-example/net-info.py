@@ -16,15 +16,15 @@ else:
 # Vars
 # Example Node List, Modify to make it your own
 
-nodes = ["192.168.100.31",
-         "192.168.100.35",
-         "192.168.100.32",
-         "192.168.100.33",
-         "192.168.100.34"]
+nodes = ["172.31.0.11",
+         "172.31.0.12",
+         "172.31.0.14",
+         "172.31.0.15",
+         "172.31.0.31"]
 
 # Modify switch login userid and pw as needed
-userid = "arista"
-password = "arista123"
+userid = "admin"
+password = "admin"
 
 
 print ("\n")
@@ -37,7 +37,7 @@ print ("------------------------------------------------------------------------
 
 for node in nodes:
 
-   # Instantiate switch object
+   # Instantiate switch object on each node
    RESTURL = "https://" + userid + ":" + password + "@" + node + "/command-api"
    switch = Server(RESTURL)
 
