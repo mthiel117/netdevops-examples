@@ -3,7 +3,10 @@
 !
 hostname {{ switch.hostname }}
 !
+vrf instance MGMT
+!
 interface Management1
+   vrf MGMT
    description Management
    ip address {{ switch.mgmt_ip }}/{{ switch.netmask }}
 !
