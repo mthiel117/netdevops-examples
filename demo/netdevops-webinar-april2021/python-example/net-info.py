@@ -20,7 +20,7 @@ nodes = ["172.31.0.11",
          "172.31.0.12",
          "172.31.0.14",
          "172.31.0.15",
-         "172.31.0.31"]
+         "172.31.0.30"]
 
 # Modify switch login userid and pw as needed
 userid = "admin"
@@ -28,10 +28,10 @@ password = "admin"
 
 
 print ("\n")
-print ("Network Node Information")
-print ("----------------------------------------------------------------------------------------------------------------------------")
-print ("Node       IP Address      System MAC           Model                Uptime(s)    TotalMem   FreeMem    Version    Neighbors ")
-print ("----------------------------------------------------------------------------------------------------------------------------")
+print ("Network Inventory")
+print ("---------------------------------------------------------------------------------------------------------------------")
+print ("Node       IP Address      Serial No     Model                Uptime(s)    TotalMem   FreeMem    Version    Neighbors ")
+print ("---------------------------------------------------------------------------------------------------------------------")
 
 # Loop through each node and gather info
 
@@ -49,7 +49,7 @@ for node in nodes:
                                  "show lldp neighbors"])
 
    hostname = response[0]["hostname"]
-   systemMac = response[1]["systemMacAddress"]
+   serialNo = response[1]["serialNumber"]
    model = response[1]["modelName"]
    totalMem = response[1]["memTotal"]
    freeMem = response[1]["memFree"]
@@ -59,7 +59,7 @@ for node in nodes:
    lldpNeighbors = response[3]["lldpNeighbors"]
    numLldpNeighbors = len(lldpNeighbors)
 
-   print ("%-10s %-15s %-20s %-20s %-12s %-10s %-10s %-10s %-10s" % (hostname, mgmtip, systemMac, model, uptime, totalMem, freeMem, eosVersion, numLldpNeighbors))
+   print ("%-10s %-15s %-13s %-20s %-12s %-10s %-10s %-10s %-10s" % (hostname, mgmtip, serialNo, model, uptime, totalMem, freeMem, eosVersion, numLldpNeighbors))
 
 # end of loop
 
