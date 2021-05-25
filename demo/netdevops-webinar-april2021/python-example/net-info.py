@@ -37,10 +37,10 @@ print ("------------------------------------------------------------------------
 for node in nodes:
 
    # Instantiate switch object on each node
-   # RESTURL = "https://admin:admin@172.31.0.30/command-api"
+   # URL = "https://admin:admin@172.31.0.30/command-api"
 
-   RESTURL = "https://" + userid + ":" + password + "@" + node + "/command-api"
-   switch = Server(RESTURL)
+   URL = "https://" + userid + ":" + password + "@" + node + "/command-api"
+   switch = Server(URL)
 
    # run command(s) against switch object
    # list of command output returned in a List (array) or JSON key:value pairs
