@@ -13,7 +13,6 @@ except AttributeError:
 else:
   ssl._create_default_https_context = _create_unverified_https_context
 
-# Vars
 # Example Node List, Modify to make it your own
 
 nodes = ["172.31.0.11",
@@ -22,6 +21,25 @@ nodes = ["172.31.0.11",
          "172.31.0.15",
          "172.31.0.30"]
 
+# nodes = ["172.31.0.11",
+#          "172.31.0.12",
+#          "172.31.0.14",
+#          "172.31.0.15",
+#          "172.31.0.16",
+#          "172.31.0.17",
+#          "172.31.0.20",
+#          "172.31.0.21",
+#          "172.31.0.22",
+#          "172.31.0.23",
+#          "172.31.0.24",
+#          "172.31.0.25",
+#          "172.31.0.26",
+#          "172.31.0.27",
+#          "172.31.0.28",
+#          "172.31.0.29",
+#          "172.31.0.30",
+#          "172.31.0.31"]
+
 # Modify switch login userid and pw as needed
 userid = "admin"
 password = "admin"
@@ -29,15 +47,17 @@ password = "admin"
 
 print ("\n")
 print ("Network Inventory")
-print ("---------------------------------------------------------------------------------------------------------------------")
-print ("Node       IP Address      Serial No     Model                Uptime(s)    TotalMem   FreeMem    Version    Neighbors ")
-print ("---------------------------------------------------------------------------------------------------------------------")
+print ("----------------------------------------------------------------------------------------------------------------------")
+print ("Node       IP Address      Serial No     Model                 Uptime(s)    TotalMem   FreeMem    Version    Neighbors ")
+print ("----------------------------------------------------------------------------------------------------------------------")
 
 # Loop through each node and gather info
 
 for node in nodes:
 
    # Instantiate switch object on each node
+   # RESTURL = "https://admin:admin@172.31.0.30/command-api"
+
    RESTURL = "https://" + userid + ":" + password + "@" + node + "/command-api"
    switch = Server(RESTURL)
 
@@ -59,7 +79,7 @@ for node in nodes:
    lldpNeighbors = response[3]["lldpNeighbors"]
    numLldpNeighbors = len(lldpNeighbors)
 
-   print ("%-10s %-15s %-13s %-20s %-12s %-10s %-10s %-10s %-10s" % (hostname, mgmtip, serialNo, model, uptime, totalMem, freeMem, eosVersion, numLldpNeighbors))
+   print ("%-10s %-15s %-13s %-21s %-12s %-10s %-10s %-10s %-10s" % (hostname, mgmtip, serialNo, model, uptime, totalMem, freeMem, eosVersion, numLldpNeighbors))
 
 # end of loop
 
